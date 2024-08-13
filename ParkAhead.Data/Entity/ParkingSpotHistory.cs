@@ -31,7 +31,7 @@ namespace ParkAhead.Data.Entity
 			builder.HasOne(x => x.Status)
 				.WithMany()
 				.HasForeignKey(x => x.StatusId)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }

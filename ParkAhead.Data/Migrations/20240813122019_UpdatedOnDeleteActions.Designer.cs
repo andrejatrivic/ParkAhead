@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ParkAhead.Data;
 
@@ -11,9 +12,11 @@ using ParkAhead.Data;
 namespace ParkAhead.Data.Migrations
 {
     [DbContext(typeof(ParkAheadDbContext))]
-    partial class ParkAheadDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240813122019_UpdatedOnDeleteActions")]
+    partial class UpdatedOnDeleteActions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,11 +53,11 @@ namespace ParkAhead.Data.Migrations
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Latitude")
-                        .HasColumnType("DECIMAL(18, 8)");
+                    b.Property<long>("Latitude")
+                        .HasColumnType("bigint");
 
-                    b.Property<decimal>("Longitude")
-                        .HasColumnType("DECIMAL(18, 8)");
+                    b.Property<long>("Longitude")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("ParkingId")
                         .HasColumnType("int");
