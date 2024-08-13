@@ -29,6 +29,17 @@ namespace ParkAhead.Data.Repository
 		}
 
 		/// <summary>
+		/// Get by id
+		/// </summary>
+		/// <param name="id">id</param>
+		/// <returns></returns>
+		public async Task<T> GetByIdAsync(int id)
+		{
+			_context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+			return await _context.Set<T>().FindAsync(id);
+		}
+
+		/// <summary>
 		/// Update
 		/// </summary>
 		public void Update(T entity)

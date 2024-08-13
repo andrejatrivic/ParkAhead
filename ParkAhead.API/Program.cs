@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ParkAhead.Business.Interfaces;
+using ParkAhead.Business.Services;
 using ParkAhead.Data;
 using ParkAhead.Data.Entity;
 using ParkAhead.Data.Repository;
@@ -32,6 +34,17 @@ builder.Services.AddScoped<IRepository<User>, Repository<User>>();
 
 #endregion
 
+#region AutoMapper
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+#endregion
+
+#region Service
+
+builder.Services.AddScoped<IParkingService, ParkingService>();	
+
+#endregion
 
 var app = builder.Build();
 
