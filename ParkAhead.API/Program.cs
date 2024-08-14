@@ -43,6 +43,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 #region Service
 
 builder.Services.AddScoped<IParkingService, ParkingService>();	
+builder.Services.AddScoped<IParkingSpotService, ParkingSpotService>();	
 
 #endregion
 

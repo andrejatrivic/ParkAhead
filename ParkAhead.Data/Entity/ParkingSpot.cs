@@ -9,6 +9,7 @@ namespace ParkAhead.Data.Entity
 		public decimal Latitude { get; set; }
 		public decimal Longitude { get; set; }
 		public DateTime LastUpdated { get; set; }
+		public int ParkingSpotNumber { get; set; }
 		public int ParkingId { get; set; }
 		public int StatusId { get; set; }
 
