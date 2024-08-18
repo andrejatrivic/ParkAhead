@@ -43,7 +43,22 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 #region Service
 
 builder.Services.AddScoped<IParkingService, ParkingService>();	
-builder.Services.AddScoped<IParkingSpotService, ParkingSpotService>();	
+builder.Services.AddScoped<IParkingSpotService, ParkingSpotService>();
+
+#endregion
+
+#region Cors
+
+builder.Services.AddCors(options =>
+{
+	options.AddDefaultPolicy(
+		builder =>
+		{
+			builder.AllowAnyOrigin()
+								.AllowAnyHeader()
+								.AllowAnyMethod();
+		});
+});
 
 #endregion
 
@@ -65,6 +80,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 #endregion
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
