@@ -1,2 +1,5 @@
 <h2>Parkings</h2>
-<p>This is the Parking page content.</p>
+<p>These are all the parkings that use our services.</p>
+<ul>
+  <li *ngFor="let parking of parkings"> {{ parking.name }} </li>
+</ul>

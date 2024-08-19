@@ -20,7 +20,6 @@ namespace ParkAhead.Business.Services
 			_mapper = mapper;	
         }
 
-
 		public async Task<IEnumerable<ParkingSpotModel>> GetParkingSpots()
 		{
 			var parkingSpots = await _repository.GetAll()

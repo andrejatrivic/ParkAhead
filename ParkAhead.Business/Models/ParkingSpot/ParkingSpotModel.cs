@@ -7,5 +7,6 @@
 		public int ParkingSpotNumber { get; set; }
 		public string ParkingName { get; set; }
 		public string StatusName { get; set; }
+		public int StatusId {  get; set; }
 	}
 }

@@ -17,3 +17,15 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
+
+.status-red {
+  background-color: #ffcccc; 
+}
+
+.status-orange {
+  background-color: #ffe5b4;
+}
+
+.status-green {
+  background-color: #ccffcc; 
+}

@@ -4,4 +4,5 @@ export interface ParkingSpot {
   parkingSpotNumber: number
   parkingName: string
   statusName: string
+  statusId: number
 }

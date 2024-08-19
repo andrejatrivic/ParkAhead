@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { ParkingSpotsComponent } from './parking-spots/parking-spots.component';
 import { ParkingSpotService } from './services/parking-spot.service';
 import { MapComponent } from './map/map.component';
+import { ParkingsComponent } from './parkings/parkings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ParkingsComponent,
     ParkingSpotsComponent,
     MapComponent
   ],

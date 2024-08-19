@@ -23,6 +23,19 @@ export class ParkingSpotsComponent implements OnInit {
     });
   }
 
+  getRowClass(statusId: number): string {
+    switch (statusId) {
+      case 1:
+        return 'status-green';
+      case 2:
+        return 'status-red';
+      case 3:
+        return 'status-orange';
+      default:
+        return '';
+    }
+  }
+
   onParkingChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     const parkingId = Number(target.value);
@@ -30,16 +43,9 @@ export class ParkingSpotsComponent implements OnInit {
     this.fetchParkingSpots(parkingId);
   }
 
-
   fetchParkingSpots(parkingId: number): void {
     this.parkingSpotService.getParkingSpotsSpotId(parkingId).subscribe((parkingSpots) => {
       this.parkingSpots = parkingSpots;
     });
   }
-
-  //ngOnInit(): void {
-  //  this.parkingSpotService.getParkingSpots().subscribe((parkingSpots) => {
-  //    this.parkingSpots = parkingSpots;
-  //  });
-  //}
 }
