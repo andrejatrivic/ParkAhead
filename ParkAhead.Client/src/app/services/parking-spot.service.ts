@@ -14,4 +14,8 @@ export class ParkingSpotService {
   getParkingSpots(): Observable<any[]> {
     return this.http.get<ParkingSpot[]>(`${this.baseUrl}/GetParkingsSpots`);
   }
+
+  getParkingSpotsSpotId(parkingId: number): Observable<any[]> {
+    return this.http.get<ParkingSpot[]>(`${this.baseUrl}/GetParkingsSpots/${parkingId}`);
+  }
 }

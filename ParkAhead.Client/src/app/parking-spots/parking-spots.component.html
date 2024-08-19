@@ -1,6 +1,15 @@
 <h2>Parking Spots Page</h2>
 <p>This is the Parking Spots page content.</p>
 
+<!-- Dropdown Menu for Selecting Parking -->
+<label for="parking-select">Select Parking:</label>
+<select id="parking-select" (change)="onParkingChange($event)">
+  <option *ngFor="let parking of parkings" [value]="parking.id">
+    {{ parking.name }}
+  </option>
+</select>
+
+<!-- Table for Displaying Parking Spots -->
 <table>
   <thead>
     <tr>
@@ -21,3 +30,8 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Message when no spots are available -->
+<div *ngIf="parkingSpots.length === 0 && selectedParkingId">
+  No spots available for the selected parking.
+</div>
