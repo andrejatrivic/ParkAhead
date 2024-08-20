@@ -10,6 +10,7 @@ import { ParkingsComponent } from './parkings/parkings.component';
 import { ParkingSpotsComponent } from './parking-spots/parking-spots.component';
 import { MapComponent } from './map/map.component';
 import { LandingComponent } from './landing/landing.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LandingComponent } from './landing/landing.component';
     ParkingsComponent,
     ParkingSpotsComponent,
     MapComponent,
-    LandingComponent
+    LandingComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
