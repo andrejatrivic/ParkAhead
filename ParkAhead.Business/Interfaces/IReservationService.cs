@@ -2,5 +2,6 @@
 {
 	public interface IReservationService
 	{
+		Task<bool> ReserveParkingSpot(int id);
 	}
 }
