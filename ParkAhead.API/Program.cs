@@ -45,6 +45,9 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IParkingService, ParkingService>();	
 builder.Services.AddScoped<IParkingSpotService, ParkingSpotService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IHashService, HashService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 #endregion
 
