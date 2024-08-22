@@ -38,6 +38,10 @@ table {
       float: left;
     }
 
+    .topnav ul li.login {
+      float: right;
+    }
+
       .topnav ul li a {
         display: block;
         color: #f2f2f2;
@@ -56,3 +60,4 @@ table {
           background-color: #04AA6D;
           color: white;
         }
+
