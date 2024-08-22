@@ -23,7 +23,7 @@ namespace ParkAhead.API.Controllers
 		}
 
 		[HttpPost("Login")]
-		public async Task<string> Login(UserModel userLoginModel)
+		public async Task<string> Login(UserLoginModel userLoginModel)
 		{
 			var response = await _service.Login(userLoginModel);
 			return response;

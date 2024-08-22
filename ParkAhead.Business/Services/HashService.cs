@@ -31,5 +31,16 @@ namespace ParkAhead.Business.Services
 				return Convert.ToHexString(computedHash).ToLower();
 			}
 		}
+
+		public string Hash(string text)
+		{
+			byte[] textBytes = Encoding.UTF8.GetBytes(text);
+
+			using (SHA256 sha256 = SHA256.Create())
+			{
+				byte[] computedHash = sha256.ComputeHash(textBytes);
+				return Convert.ToHexString(computedHash).ToLower();
+			}
+		}
 	}
 }

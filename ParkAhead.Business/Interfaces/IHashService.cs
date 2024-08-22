@@ -4,5 +4,6 @@
 	{
 		public string CreateSalt();
 		public string CreateSaltedPassword(string hashedPassword, string salt);
+		public string Hash(string text);
 	}
 }

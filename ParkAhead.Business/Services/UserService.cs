@@ -15,17 +15,23 @@ namespace ParkAhead.Business.Services
 
 		private readonly IRepository<User> _repository;
 		private readonly IHashService _hashService;
+		private readonly ITokenService _tokenService;
 		private readonly IMapper _mapper;
 		private readonly IConfiguration _configuration;
-		public UserService(IRepository<User> repository, IHashService hashService, IMapper mapper, IConfiguration configuration)
+		public UserService(IRepository<User> repository, 
+			IHashService hashService, 
+			ITokenService tokenService, 
+			IMapper mapper,
+			IConfiguration configuration)
 		{
 			_repository = repository;
 			_hashService = hashService;
+			_tokenService = tokenService;
 			_mapper = mapper;
 			_configuration = configuration;
 		}
 
-		public async Task<string> Login(UserModel loginModel)
+		public async Task<string> Login(UserLoginModel loginModel)
 		{
 			var userEntity = GetUser(loginModel.Username);
 
@@ -36,7 +42,8 @@ namespace ParkAhead.Business.Services
 
 			if (CheckPassword(loginModel.PasswordHash, userEntity.Salt, userEntity.PasswordHash))
 			{
-				return SUCCESS;
+				var user = _mapper.Map<UserModel>(userEntity);
+				return _tokenService.CreateToken(user);
 			}
 
 			return FAILED;
@@ -55,7 +62,8 @@ namespace ParkAhead.Business.Services
 			_repository.Add(newUser);
 			await _repository.SaveAsync();
 
-			return SUCCESS;
+			var user = _mapper.Map<UserModel>(registrationModel);
+			return _tokenService.CreateToken(user);
 		}
 
 		private User CreateUser(UserRegistrationModel registrationModel)
@@ -90,16 +98,9 @@ namespace ParkAhead.Business.Services
 		
 		private bool CheckPassword(string hashPass, string storedSalt, string storedHashSaltPass)
 		{
-			byte[] hashPassBytes = Encoding.UTF8.GetBytes(hashPass);
-			byte[] storedSaltBytes = Encoding.UTF8.GetBytes(storedSalt);
-			byte[] storedHashSaltPassBytes = Encoding.UTF8.GetBytes(storedHashSaltPass);
+			var saltedHashPass = _hashService.Hash(string.Concat(hashPass, storedSalt));
 
-			byte[] saltedPasswordBytes = new byte[hashPassBytes.Length + storedSaltBytes.Length];
-
-			hashPassBytes.CopyTo(saltedPasswordBytes, 0);
-			storedSaltBytes.CopyTo(saltedPasswordBytes, hashPassBytes.Length);
-
-			return storedHashSaltPassBytes.SequenceEqual(saltedPasswordBytes);
+			return saltedHashPass.Equals(storedHashSaltPass);
 		}
 	}
 }

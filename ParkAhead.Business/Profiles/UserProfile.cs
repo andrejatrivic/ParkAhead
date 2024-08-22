@@ -7,8 +7,11 @@ namespace ParkAhead.Business.Profiles
 	{
         public UserProfile()
         {
+            CreateMap<Data.Entity.User, UserLoginModel>();
             CreateMap<Data.Entity.User, UserModel>();
-            CreateMap<UserModel, Data.Entity.User>();
+            CreateMap<UserLoginModel, Data.Entity.User>();
+            CreateMap<UserRegistrationModel, UserModel>();
+            CreateMap<UserLoginModel, UserModel>();
         }
     }
 }

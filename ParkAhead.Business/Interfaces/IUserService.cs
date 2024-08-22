@@ -4,7 +4,7 @@ namespace ParkAhead.Business.Interfaces
 {
 	public interface IUserService
 	{
-		Task<string> Login(UserModel loginModel);
+		Task<string> Login(UserLoginModel loginModel);
 		Task<string> Registration(UserRegistrationModel registrationModel);
 	}
 }
