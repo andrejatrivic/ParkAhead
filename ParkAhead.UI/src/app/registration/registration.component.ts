@@ -13,6 +13,7 @@ export class RegistrationComponent {
   email: string = '';
   phone: string = '';
   password: string = '';
+
   constructor(private authService: AuthService, private router: Router, private cookieService: CookieService) { }
 
   async onSubmit(): Promise<void> {
@@ -22,14 +23,14 @@ export class RegistrationComponent {
 
         if (response !== "FAILED") {
           this.cookieService.set('jwt', response);
-          console.log("token: " + response);
+          this.router.navigate(['/parking-spots']);
         } else {
-          alert('Registration failed.');
+          alert('Neuspješna registracija.');
         }
       },
       (error: any) => {
         console.error('Registration error:', error);
-        alert('An error occurred during registration. Please try again.');
+        alert('Neuspješna registracija.');
       }
     );
   }

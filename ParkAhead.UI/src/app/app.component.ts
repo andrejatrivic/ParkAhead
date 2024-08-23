@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  isLoggedIn: boolean = false;
+  constructor(private cookieService: CookieService, private router: Router) {
+    this.isLoggedIn = this.cookieService.check('jwt');
+  }
+
+  logout() {
+    this.cookieService.delete('jwt');
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
+  }
 
   ngOnInit() {
   }

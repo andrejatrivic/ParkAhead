@@ -21,14 +21,14 @@ export class LoginComponent {
 
         if (response !== "FAILED") {
           this.cookieService.set('jwt', response);
-          console.log("token: " + response);
+          this.router.navigate(['/parking-spots']);
         } else {
-          alert('Login failed. Please check your credentials.');
+          alert('Greška kod prijave.');
         }
       },
       (error: any) => {
         console.error('Login error:', error);
-        alert('An error occurred during login. Please try again.');
+        alert('Greška kod prijave.');
       }
     );
   }

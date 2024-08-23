@@ -9,6 +9,8 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'parkings', component: ParkingsComponent },
@@ -16,8 +18,8 @@ const routes: Routes = [
   { path: 'parking-spots', component: ParkingSpotsComponent },
   { path: 'map', component: MapComponent },
   { path: 'user', component: UserComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'registration', component: RegistrationComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
