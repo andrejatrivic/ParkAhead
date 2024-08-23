@@ -21,7 +21,7 @@ export class ReservationComponent {
     this.parkingService.getParkings().subscribe((parkings) => {
       this.parkings = parkings;
       if (this.parkings.length > 0) {
-        // Initialize with the first parking
+      
         this.selectedParkingId = this.parkings[0].id;
         this.selectedParkingImage = this.parkings[0].imageUrl;
         this.fetchParkingSpots(this.selectedParkingId);
@@ -65,8 +65,6 @@ export class ReservationComponent {
   }
 
   onSpotClick(spot: ParkingSpot): void {
-    // Example logic for click event
-    spot.statusId = 4; // Change status ID to a new value representing the clicked state
     console.log('Clicked on spot:', spot);
   }
 }
