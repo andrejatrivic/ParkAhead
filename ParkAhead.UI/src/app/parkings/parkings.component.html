@@ -1,5 +1,11 @@
 <h2>Parkings</h2>
-<p>These are all the parkings that use our services.</p>
-<ul>
-  <li *ngFor="let parking of parkings"> {{ parking.name }} </li>
-</ul>
+
+<div class="container">
+  <select (change)="onParkingSelect($event)">
+    <option *ngFor="let parking of parkings" [value]="parking.imageUrl">{{ parking.name }}</option>
+  </select>
+</div>
+
+<div *ngIf="selectedParkingImage">
+  <img [src]="selectedParkingImage" alt="Selected Parking" style="max-width: 100%; height: auto; border: 3px solid orange" />
+</div>

@@ -1,1 +1,22 @@
-<p>reservation works!</p>
+<h2>Reservation</h2>
+
+<div class="container">
+  <select (change)="onParkingSelect($event)">
+    <option *ngFor="let parking of parkings" [value]="parking.imageUrl">{{ parking.name }}</option>
+  </select>
+</div>
+
+<div class="image-container" *ngIf="selectedParkingImage">
+  <img [src]="selectedParkingImage" alt="Selected Parking" />
+
+  <div *ngFor="let spot of parkingSpots"
+       class="parking-spot-dot"
+       [ngStyle]="{
+    'top.px': spot.imageY,
+    'left.px': spot.imageX,
+    'background-color': getSpotColor(spot)
+  }"
+       (click)="onSpotClick(spot)"
+       [title]="spot.parkingSpotNumber + ' - ' + spot.statusName"></div>
+
+</div>

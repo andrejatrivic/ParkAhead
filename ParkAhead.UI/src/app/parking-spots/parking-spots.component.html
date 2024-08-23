@@ -1,11 +1,14 @@
 <h2>Parking Spots</h2>
 
-<label for="parking-select">Select Parking:</label>
-<select id="parking-select" (change)="onParkingChange($event)">
-  <option *ngFor="let parking of parkings" [value]="parking.id">
-    {{ parking.name }}
-  </option>
-</select>
+<div class="container">
+  <label for="parking-select">Select Parking:</label>
+  <select id="parking-select" (change)="onParkingChange($event)">
+    <option *ngFor="let parking of parkings" [value]="parking.id">
+      {{ parking.name }}
+    </option>
+  </select>
+</div>
+
 
 <table>
   <thead>

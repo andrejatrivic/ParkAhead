@@ -8,5 +8,7 @@
 		public string ParkingName { get; set; }
 		public string StatusName { get; set; }
 		public int StatusId {  get; set; }
+		public int ImageX { get; set; }
+		public int ImageY { get; set; }
 	}
 }

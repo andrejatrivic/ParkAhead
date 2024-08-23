@@ -20,6 +20,9 @@ export class ParkingSpotsComponent implements OnInit {
   ngOnInit(): void {
     this.parkingService.getParkings().subscribe((parkings) => {
       this.parkings = parkings;
+      if (this.parkings.length > 0) {
+        this.fetchParkingSpots(this.parkings[0].id);
+      }
     });
   }
 
@@ -44,7 +47,7 @@ export class ParkingSpotsComponent implements OnInit {
   }
 
   fetchParkingSpots(parkingId: number): void {
-    this.parkingSpotService.getParkingSpotsSpotId(parkingId).subscribe((parkingSpots) => {
+    this.parkingSpotService.getParkingSpotsParkingId(parkingId).subscribe((parkingSpots) => {
       this.parkingSpots = parkingSpots;
     });
   }

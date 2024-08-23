@@ -1,0 +1,50 @@
+h2 {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+label {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+  color: #555;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+select {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.comment-list {
+  margin: 20px;
+}
+
+img {
+  width: 900px;
+  height: 400px;
+  object-fit: cover;
+}

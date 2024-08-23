@@ -37,14 +37,14 @@ form input[type="password"] {
 
   form input[type="text"]:focus,
   form input[type="password"]:focus {
-    background-color: #e6f7ff;
+    background-color: #d6ddff;
     outline: none;
   }
 
 form button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background-color: #28a745;
+  background-color: #f88219;
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -54,14 +54,14 @@ form button[type="submit"] {
 }
 
   form button[type="submit"]:hover {
-    background-color: #218838;
+    background-color: #db7418;
   }
 
 a {
   display: block;
   text-align: center;
   margin-top: 20px;
-  color: #007bff;
+  color: #182560;
   text-decoration: none;
   font-size: 14px;
 }

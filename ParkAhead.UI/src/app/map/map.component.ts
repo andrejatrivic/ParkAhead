@@ -12,7 +12,7 @@ export class MapComponent {
   options: Leaflet.MapOptions = {
     layers: getLayers(),
     zoom: 12,
-    center: new Leaflet.LatLng(43.530147, 16.488932)
+    center: new Leaflet.LatLng(45.749341, 15.996975)
   };
 }
 

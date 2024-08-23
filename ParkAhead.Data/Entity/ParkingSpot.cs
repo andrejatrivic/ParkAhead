@@ -12,6 +12,8 @@ namespace ParkAhead.Data.Entity
 		public int ParkingSpotNumber { get; set; }
 		public int ParkingId { get; set; }
 		public int StatusId { get; set; }
+		public int ImageX { get; set; }
+		public int ImageY { get; set; }
 
 		public virtual Status Status { get; set; }
 		public virtual Parking Parking { get; set; }

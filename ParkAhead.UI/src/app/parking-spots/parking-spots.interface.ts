@@ -5,4 +5,6 @@ export interface ParkingSpot {
   parkingName: string
   statusName: string
   statusId: number
+  imageX: number
+  imageY: number
 }

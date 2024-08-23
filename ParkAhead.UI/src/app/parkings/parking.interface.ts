@@ -1,4 +1,5 @@
 export interface Parking {
   id: number,
-  name: string
+  name: string,
+  imageUrl: string
 }
