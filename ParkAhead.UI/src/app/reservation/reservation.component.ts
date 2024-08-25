@@ -20,8 +20,8 @@ export class ReservationComponent {
   ngOnInit(): void {
     this.parkingService.getParkings().subscribe((parkings) => {
       this.parkings = parkings;
-      if (this.parkings.length > 0) {
-      
+
+      if (this.parkings.length > 0) {      
         this.selectedParkingId = this.parkings[0].id;
         this.selectedParkingImage = this.parkings[0].imageUrl;
         this.fetchParkingSpots(this.selectedParkingId);
@@ -53,11 +53,11 @@ export class ReservationComponent {
 
   getSpotColor(spot: ParkingSpot): string {
     switch (spot.statusId) {
-      case 1: // Available
+      case 1: 
         return 'green';
-      case 2: // Occupied
+      case 2: 
         return 'red';
-      case 3: // Reserved
+      case 3: 
         return 'orange';
       default:
         return 'gray';
