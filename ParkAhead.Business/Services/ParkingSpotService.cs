@@ -53,6 +53,23 @@ namespace ParkAhead.Business.Services
 			return parkingSpotEntity.StatusId;
 		}
 
+		public async Task<int> ChangeParkingSpotStatus(int parkingSpotId, int status)
+		{
+			var parkingSpotEntity = await _repository.GetByIdAsync(parkingSpotId);
+			if (parkingSpotEntity is null) return 0;
+
+			var parkingSpotStatus = new ParkingSpotStatusUpdateModel
+			{
+				StatusId = status,
+			};
+
+			_mapper.Map(parkingSpotStatus, parkingSpotEntity);
+			_repository.Update(parkingSpotEntity);
+			await _repository.SaveAsync();
+
+			return parkingSpotEntity.StatusId;
+		}
+
 		public async Task<int> GetParkingSpotStatus(int id)
 		{
 			var parkingSpotStatus = await _repository.GetByIdAsync(id);

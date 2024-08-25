@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ParkAhead.Business.Interfaces;
 using ParkAhead.Business.Models.User;
@@ -16,9 +17,9 @@ namespace ParkAhead.Business.Services
 			_configuration = configuration;
         }
 
-        public string CreateToken(UserModel userModel)
+		public string CreateToken(UserModel userModel)
 		{
-			var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+			var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]); 
 
 			var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -26,11 +27,14 @@ namespace ParkAhead.Business.Services
 			{
 				Subject = new ClaimsIdentity(new Claim[]
 				{
-				new Claim("username", userModel.Username),
-				new Claim("email", userModel.Email),
-				new Claim("phoneNumber", userModel.PhoneNumber)
+					new Claim(ClaimTypes.Name, userModel.Username), 
+                    new Claim(ClaimTypes.Email, userModel.Email),
+					new Claim(ClaimTypes.MobilePhone, userModel.PhoneNumber)
 				}),
-				Expires = DateTime.UtcNow.AddHours(1)	
+				Expires = DateTime.UtcNow.AddHours(1),
+				SigningCredentials = new SigningCredentials(
+					new SymmetricSecurityKey(key),
+					SecurityAlgorithms.HmacSha256) 
 			};
 
 			var token = tokenHandler.CreateToken(tokenDescriptor);
