@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using ParkAhead.Business.Interfaces;
-using ParkAhead.Business.Models.Parking;
 using ParkAhead.Business.Models.ParkingSpot;
 using ParkAhead.Data.Entity;
 using ParkAhead.Data.Repository;
