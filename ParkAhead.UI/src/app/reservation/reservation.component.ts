@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ParkingService } from '../services/parkings.service';
 import { ParkingSpotService } from '../services/parking-spot.service';
 import { Parking } from '../parkings/parking.interface';
@@ -9,24 +9,36 @@ import { ParkingSpot } from '../parking-spots/parking-spots.interface';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
-export class ReservationComponent {
+export class ReservationComponent implements AfterViewInit {
   parkings: Parking[] = [];
   selectedParkingImage: string | null = null;
   parkingSpots: ParkingSpot[] = [];
   selectedParkingId: number | null = null;
+  imageWidth: number = 0;
+  imageHeight: number = 0;
+  selectedSpot: ParkingSpot | null = null;  
 
-  constructor(private parkingSpotService: ParkingSpotService, private parkingService: ParkingService) { }
+  @ViewChild('imageElement') imageElement: ElementRef<HTMLImageElement> | undefined;
+
+  constructor(
+    private parkingSpotService: ParkingSpotService,
+    private parkingService: ParkingService
+  ) { }
 
   ngOnInit(): void {
     this.parkingService.getParkings().subscribe((parkings) => {
       this.parkings = parkings;
 
-      if (this.parkings.length > 0) {      
+      if (this.parkings.length > 0) {
         this.selectedParkingId = this.parkings[0].id;
         this.selectedParkingImage = this.parkings[0].imageUrl;
         this.fetchParkingSpots(this.selectedParkingId);
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.updateImageDimensions();
   }
 
   onParkingSelect(event: Event): void {
@@ -38,26 +50,23 @@ export class ReservationComponent {
       this.selectedParkingImage = selectedImageUrl;
       this.selectedParkingId = selectedParking.id;
       this.fetchParkingSpots(this.selectedParkingId);
+      this.updateImageDimensions();
     }
-
-    console.log('Selected parking:', selectedParking);
   }
 
   fetchParkingSpots(parkingId: number): void {
-    console.log('Fetching parking spots for parking ID:', parkingId);
     this.parkingSpotService.getParkingSpotsParkingId(parkingId).subscribe((parkingSpots) => {
       this.parkingSpots = parkingSpots;
-      console.log('Fetched parking spots:', this.parkingSpots);
     });
   }
 
   getSpotColor(spot: ParkingSpot): string {
     switch (spot.statusId) {
-      case 1: 
+      case 1:
         return 'green';
-      case 2: 
+      case 2:
         return 'red';
-      case 3: 
+      case 3:
         return 'orange';
       default:
         return 'gray';
@@ -65,6 +74,18 @@ export class ReservationComponent {
   }
 
   onSpotClick(spot: ParkingSpot): void {
-    console.log('Clicked on spot:', spot);
+    this.selectedSpot = spot;  
+  }
+
+  updateImageDimensions(): void {
+    if (this.imageElement && this.imageElement.nativeElement) {
+      const img = this.imageElement.nativeElement;
+      this.imageWidth = img.width;
+      this.imageHeight = img.height;
+    }
+  }
+
+  onImageLoad(): void {
+    this.updateImageDimensions();
   }
 }

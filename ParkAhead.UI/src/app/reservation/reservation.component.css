@@ -38,24 +38,55 @@ select {
   margin-bottom: 20px;
 }
 
-.img {
+.image-reservation-container {
+  display: flex; 
+  align-items: stretch; 
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  border: 3px solid orange;
+  height: auto; 
+  gap: 10px; 
 }
 
 .image-container {
+  flex: 2; 
   position: relative;
-  display: inline-block;
-  max-width: 100%;
+  height: auto; 
 }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+.reservation-container {
+  flex: 1;
+  background-color: #0b1541;
+  color: white;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  height: auto;
+  font-family: 'Trebuchet MS', sans-serif;
+  padding: 20px; 
+  text-align: center; 
+}
+
+  .reservation-container h2 {
+    color: white;
+    margin-bottom: 20px; 
+  }
+
+  .reservation-container p {
+    margin: 10px 0; 
+  }
+
 
 .parking-spot-dot {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  position: absolute;
+  position: absolute; 
   cursor: pointer;
   border: 2px solid #fff;
   transition: background-color 0.3s ease;

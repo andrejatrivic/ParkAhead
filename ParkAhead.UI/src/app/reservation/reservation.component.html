@@ -6,17 +6,30 @@
   </select>
 </div>
 
-<div class="image-container" *ngIf="selectedParkingImage">
-  <img [src]="selectedParkingImage" alt="Selected Parking" />
-
-  <div *ngFor="let spot of parkingSpots"
-       class="parking-spot-dot"
-       [ngStyle]="{
-    'top.px': spot.imageY,
-    'left.px': spot.imageX,
-    'background-color': getSpotColor(spot)
-  }"
-       (click)="onSpotClick(spot)"
-       [title]="spot.parkingSpotNumber + ' - ' + spot.statusName"></div>
-
+<div class="image-reservation-container">
+  <div class="image-container" *ngIf="selectedParkingImage">
+    <img #imageElement [src]="selectedParkingImage" alt="Selected Parking" (load)="onImageLoad()" />
+    <div *ngFor="let spot of parkingSpots"
+         class="parking-spot-dot"
+         [ngStyle]="{
+          'top': (spot.imageY / 619 * 100) + '%',
+          'left': (spot.imageX / 1100 * 100) + '%',
+          'background-color': getSpotColor(spot)
+        }"
+         (click)="onSpotClick(spot)"
+         [title]="spot.parkingSpotNumber + ' - ' + spot.statusName"></div>
+  </div>
+  <div class="reservation-container">
+    <h2>Spot Info</h2>
+    <div *ngIf="selectedSpot">
+      <p>Spot Number: {{ selectedSpot.parkingSpotNumber }}</p>
+      <p>Parking Name: {{ selectedSpot.parkingName }}</p>
+      <p>Status: {{ selectedSpot.statusName }}</p>
+      <p>Coordinates: {{ selectedSpot.latitude }}, {{ selectedSpot.longitude }}</p>
+      <!--<button type="submit">Reserve parking spot</button>-->
+    </div>
+    <div *ngIf="!selectedSpot">
+      <p>Select a parking spot to see details.</p>
+    </div>
+  </div>
 </div>
