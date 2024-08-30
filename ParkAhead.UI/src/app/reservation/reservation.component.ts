@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ParkingService } from '../services/parkings.service';
 import { ParkingSpotService } from '../services/parking-spot.service';
+import { ReservationService } from '../services/reservation.service';
 import { Parking } from '../parkings/parking.interface';
 import { ParkingSpot } from '../parking-spots/parking-spots.interface';
 
@@ -16,13 +17,15 @@ export class ReservationComponent implements AfterViewInit {
   selectedParkingId: number | null = null;
   imageWidth: number = 0;
   imageHeight: number = 0;
-  selectedSpot: ParkingSpot | null = null;  
+  selectedSpot: ParkingSpot | null = null;
+  registrationPlate: string = '';
 
   @ViewChild('imageElement') imageElement: ElementRef<HTMLImageElement> | undefined;
 
   constructor(
     private parkingSpotService: ParkingSpotService,
-    private parkingService: ParkingService
+    private parkingService: ParkingService,
+    private reservationService: ReservationService
   ) { }
 
   ngOnInit(): void {
@@ -87,5 +90,30 @@ export class ReservationComponent implements AfterViewInit {
 
   onImageLoad(): void {
     this.updateImageDimensions();
+  }
+
+  onReserveSpot(): void {
+    if (!this.selectedSpot?.id) {
+      alert("Please select a valid parking spot.");
+      return;
+    }
+
+    this.reservationService.reserveParkingSpot(this.selectedSpot.id, this.registrationPlate).subscribe(
+      (response: string) => {
+        if (response !== "FAILED") {
+          alert("Succesfull reservation!");
+        } else {
+          alert("Unsucessful registration.");
+        }
+      },
+      (error) => {
+        console.error('Error reserving spot:', error);
+        alert("There was an error processing your request.");
+      }
+    );
+  }
+
+  isSpotAvailable(): boolean {
+    return this.selectedSpot?.statusId === 1;
   }
 }

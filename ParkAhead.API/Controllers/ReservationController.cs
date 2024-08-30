@@ -17,7 +17,7 @@ namespace ParkAhead.API.Controllers
         }
 
         [HttpPost("reservation/{spotId}/{registrationPlate}")]
-		public async Task<bool> ReserveParkingSpot(int spotId, string registrationPlate)
+		public async Task<string> ReserveParkingSpot(int spotId, string registrationPlate)
 		{
 			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
 			var result = await _service.ReserveParkingSpot(spotId, registrationPlate, username);
@@ -25,7 +25,7 @@ namespace ParkAhead.API.Controllers
 		}
 
 		[HttpDelete("reservation/{reservationId}")]
-		public async Task<bool> CancelReservation(int reservationId)
+		public async Task<string> CancelReservation(int reservationId)
 		{
 			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
 			var result = await _service.CancelReservation(reservationId, username);
@@ -33,7 +33,7 @@ namespace ParkAhead.API.Controllers
 		}
 
 		[HttpPut("reservation/{reservationId}/arrival")]
-		public async Task<bool> ArrivedAtParkingSpot(int reservationId)
+		public async Task<string> ArrivedAtParkingSpot(int reservationId)
 		{
 			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
 			var result = await _service.ArrivedAtParkingSpot(reservationId, username);

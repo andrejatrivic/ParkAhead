@@ -3,6 +3,7 @@ using ParkAhead.Business.Interfaces;
 using ParkAhead.Business.Models.Reservation;
 using ParkAhead.Data.Entity;
 using ParkAhead.Data.Repository;
+using System.Diagnostics.Contracts;
 
 namespace ParkAhead.Business.Services
 {
@@ -11,6 +12,9 @@ namespace ParkAhead.Business.Services
 		private const int STATUS_AVAILABLE = 1;
 		private const int STATUS_OCCUPIED = 2;
 		private const int STATUS_RESERVED = 3;
+
+		private const string SUCCESS = "SUCCESS";
+		private const string FAILED = "FAILED";
 
 		private readonly IRepository<Reservation> _repository;
 		private readonly IRepository<User> _userRepository;
@@ -28,15 +32,15 @@ namespace ParkAhead.Business.Services
 			_mapper = mapper;
         }
 
-		public async Task<bool> ReserveParkingSpot(int spotId, string registrationPlate, string username)
+		public async Task<string> ReserveParkingSpot(int spotId, string registrationPlate, string username)
 		{
 			if (username is null)
 			{
-				return false;
+				return FAILED;
 			}
 			if(_parkingSpotService.GetParkingSpotStatus(spotId).Result is not STATUS_AVAILABLE)
 			{
-				return false;
+				return FAILED;
 			}
 
 			var userId = _userRepository.GetAll().Where(x => x.Username.Equals(username)).Select(x => x.Id).FirstOrDefault();
@@ -55,59 +59,59 @@ namespace ParkAhead.Business.Services
 			_repository.Add(reservationEntity);
 			await _repository.SaveAsync();
 			await _parkingSpotService.ChangeParkingSpotStatus(spotId, STATUS_RESERVED);
-			return true;
+			return SUCCESS;
 		}
 
-		public async Task<bool> CancelReservation(int reservationId, string username)
+		public async Task<string> CancelReservation(int reservationId, string username)
 		{
 			if (username is null)
 			{
-				return false;
+				return FAILED;
 			}
 
 			var userId = _userRepository.GetAll().Where(x => x.Username.Equals(username)).Select(x => x.Id).FirstOrDefault();
 			if (userId == 0) 
 			{
-				return false;
+				return FAILED;
 			}
 
 			var reservationEntity = await _repository.GetByIdAsync(reservationId);
 
 			if(DateTime.Now > reservationEntity.ReservationStart.AddMinutes(5) || reservationEntity.UserId != userId)
 			{
-				return false;
+				return FAILED;
 			}
 
 			_repository.Delete(reservationEntity);
 			await _repository.SaveAsync();
 			await _parkingSpotService.ChangeParkingSpotStatus(reservationEntity.ParkingSpotId, STATUS_AVAILABLE);
-			return true;
+			return SUCCESS;
 		}
 
-		public async Task<bool> ArrivedAtParkingSpot(int reservationId, string username)
+		public async Task<string> ArrivedAtParkingSpot(int reservationId, string username)
 		{
 			if (username is null)
 			{
-				return false;
+				return FAILED;
 			}
 
 			var userId = _userRepository.GetAll().Where(x => x.Username.Equals(username)).Select(x => x.Id).FirstOrDefault();
 			if (userId == 0)
 			{
-				return false;
+				return FAILED;
 			}
 
 			var reservationEntity = await _repository.GetByIdAsync(reservationId);
 
 			if(DateTime.Now > reservationEntity.ReservationEnd)
 			{
-				return false;
+				return FAILED;
 			}
 
 			_repository.Delete(reservationEntity);
 			await _repository.SaveAsync();
 			_parkingSpotService.ChangeParkingSpotStatus(reservationEntity.ParkingSpotId, STATUS_OCCUPIED);
-			return true;
+			return SUCCESS;
 		}
 	}
 }

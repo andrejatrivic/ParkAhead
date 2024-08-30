@@ -81,12 +81,49 @@ select {
     margin: 10px 0; 
   }
 
+  .reservation-container label {
+      color: white;
+      margin-bottom: 10px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #f88219;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+    button[type="submit"]:hover {
+      background-color: #db7418;
+    }
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+  input[type="text"]:focus {
+    background-color: #d6ddff;
+    outline: none;
+  }
 
 .parking-spot-dot {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  position: absolute; 
+  position: absolute;
   cursor: pointer;
   border: 2px solid #fff;
   transition: background-color 0.3s ease;

@@ -26,10 +26,15 @@
       <p>Parking Name: {{ selectedSpot.parkingName }}</p>
       <p>Status: {{ selectedSpot.statusName }}</p>
       <p>Coordinates: {{ selectedSpot.latitude }}, {{ selectedSpot.longitude }}</p>
-      <!--<button type="submit">Reserve parking spot</button>-->
+      <div *ngIf="isSpotAvailable()">
+        <label for="registrationPlate">Registration Plate:</label>
+        <input id="registrationPlate" [(ngModel)]="registrationPlate" type="text" placeholder="Registration plate">
+        <button type="submit" (click)="onReserveSpot()">Reserve spot</button>
+      </div>
     </div>
     <div *ngIf="!selectedSpot">
       <p>Select a parking spot to see details.</p>
     </div>
   </div>
+
 </div>

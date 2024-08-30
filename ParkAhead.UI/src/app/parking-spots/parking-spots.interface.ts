@@ -1,4 +1,5 @@
 export interface ParkingSpot {
+  id: number
   latitude: number
   longitude: number
   parkingSpotNumber: number

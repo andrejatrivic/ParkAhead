@@ -5,16 +5,15 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class GuestGuard implements CanActivate {
 
   constructor(private router: Router, private cookieService: CookieService) { }
 
   canActivate(): boolean {
     if (this.cookieService.check('jwt')) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/reservations']);
       return false;
     }
+    return true;
   }
 }
