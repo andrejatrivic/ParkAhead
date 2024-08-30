@@ -9,6 +9,7 @@ namespace ParkAhead.Business.Profiles
         {
             CreateMap<ReservationRequestModel, Data.Entity.Reservation>();
             CreateMap<ReservationCreateModel, Data.Entity.Reservation>();
+            CreateMap<Data.Entity.Reservation, ReservationModel>();
         }
     }
 }

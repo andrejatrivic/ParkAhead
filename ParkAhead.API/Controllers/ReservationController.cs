@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ParkAhead.Business.Interfaces;
+using ParkAhead.Business.Models.Reservation;
 using System.Security.Claims;
 
 namespace ParkAhead.API.Controllers
@@ -15,6 +16,13 @@ namespace ParkAhead.API.Controllers
         {
             _service = service;
         }
+
+		[HttpGet("my-reservation")]
+		public async Task<ReservationModel> GetReservation()
+		{
+			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
+			return null;
+		}
 
         [HttpPost("reservation/{spotId}/{registrationPlate}")]
 		public async Task<string> ReserveParkingSpot(int spotId, string registrationPlate)

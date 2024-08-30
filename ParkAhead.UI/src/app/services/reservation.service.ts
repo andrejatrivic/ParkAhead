@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { Reservation } from '../reservation/reservation.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,16 @@ export class ReservationService {
       '', 
       options
     );
+  }
+
+  getMyReservation(): Observable<any[]> {
+    const jwtToken = this.cookieService.get('jwt');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${jwtToken}`,
+      'Accept': 'text/plain'
+    });
+
+    return this.http.get<Reservation[]>(`${this.baseUrl}/my-reservation`, { headers });
   }
 }

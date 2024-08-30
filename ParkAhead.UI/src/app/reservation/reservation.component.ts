@@ -102,6 +102,11 @@ export class ReservationComponent implements AfterViewInit {
       (response: string) => {
         if (response !== "FAILED") {
           alert("Succesfull reservation!");
+
+          if (this.selectedParkingId) {
+            this.fetchParkingSpots(this.selectedParkingId);
+          }
+          this.selectedSpot = null;
         } else {
           alert("Unsucessful registration.");
         }
@@ -115,5 +120,10 @@ export class ReservationComponent implements AfterViewInit {
 
   isSpotAvailable(): boolean {
     return this.selectedSpot?.statusId === 1;
+  }
+
+  // dovrsi dohvat rezervacije
+  getMyReservation(): void {
+    this.reservationService.getMyReservation();
   }
 }

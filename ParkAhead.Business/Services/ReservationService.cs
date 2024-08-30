@@ -113,5 +113,22 @@ namespace ParkAhead.Business.Services
 			_parkingSpotService.ChangeParkingSpotStatus(reservationEntity.ParkingSpotId, STATUS_OCCUPIED);
 			return SUCCESS;
 		}
+
+		public async Task<ReservationModel> GetReservation(string username)
+		{
+			if (username is null)
+			{
+				return null;
+			}
+
+			var userId = _userRepository.GetAll().Where(x => x.Username.Equals(username)).Select(x => x.Id).FirstOrDefault();
+			if (userId == 0)
+			{
+				return null;
+			}
+
+			var reservationEntity = _repository.GetAll().Where(x => x.UserId.Equals(userId)).FirstOrDefault();
+			return _mapper.Map<ReservationModel>(reservationEntity);
+		} 
 	}
 }
