@@ -6,6 +6,7 @@
 		public DateTime ReservationStart { get; set; }
 		public DateTime ReservationEnd { get; set; }
 		public string RegistrationPlate { get; set; }
-		public int ParkingSpotId { get; set; }
+		public int ParkingSpotNumber { get; set; }
+		public string ParkingName { get; set;}
 	}
 }

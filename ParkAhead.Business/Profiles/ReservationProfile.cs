@@ -9,7 +9,9 @@ namespace ParkAhead.Business.Profiles
         {
             CreateMap<ReservationRequestModel, Data.Entity.Reservation>();
             CreateMap<ReservationCreateModel, Data.Entity.Reservation>();
-            CreateMap<Data.Entity.Reservation, ReservationModel>();
+            CreateMap<Data.Entity.Reservation, ReservationModel>()
+                .ForMember(dest => dest.ParkingSpotNumber, opt => opt.MapFrom(src => src.ParkingSpot.ParkingSpotNumber))
+                .ForMember(dest => dest.ParkingName, opt => opt.MapFrom(src => src.ParkingSpot.Parking.Name));
         }
     }
 }

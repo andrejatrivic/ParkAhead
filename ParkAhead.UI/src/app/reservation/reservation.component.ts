@@ -4,7 +4,8 @@ import { ParkingSpotService } from '../services/parking-spot.service';
 import { ReservationService } from '../services/reservation.service';
 import { Parking } from '../parkings/parking.interface';
 import { ParkingSpot } from '../parking-spots/parking-spots.interface';
-
+import { Reservation } from './reservation.interface';
+ 
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
@@ -18,6 +19,7 @@ export class ReservationComponent implements AfterViewInit {
   imageWidth: number = 0;
   imageHeight: number = 0;
   selectedSpot: ParkingSpot | null = null;
+  myReservedSpot: Reservation | null = null;
   registrationPlate: string = '';
 
   @ViewChild('imageElement') imageElement: ElementRef<HTMLImageElement> | undefined;
@@ -38,6 +40,15 @@ export class ReservationComponent implements AfterViewInit {
         this.fetchParkingSpots(this.selectedParkingId);
       }
     });
+
+    this.reservationService.getMyReservation().subscribe(
+      (reservation: Reservation) => {
+        this.myReservedSpot = reservation;
+      },
+      (error) => {
+        console.error('Error fetching reservation:', error);
+      }
+    );
   }
 
   ngAfterViewInit(): void {

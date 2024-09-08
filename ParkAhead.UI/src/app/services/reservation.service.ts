@@ -34,7 +34,7 @@ export class ReservationService {
     );
   }
 
-  getMyReservation(): Observable<any[]> {
+  getMyReservation(): Observable<any> {
     const jwtToken = this.cookieService.get('jwt');
 
     const headers = new HttpHeaders({
@@ -42,6 +42,6 @@ export class ReservationService {
       'Accept': 'text/plain'
     });
 
-    return this.http.get<Reservation[]>(`${this.baseUrl}/my-reservation`, { headers });
+    return this.http.get<Reservation>(`${this.baseUrl}/my-reservation`, { headers });
   }
 }

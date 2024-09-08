@@ -17,13 +17,6 @@ namespace ParkAhead.API.Controllers
             _service = service;
         }
 
-		[HttpGet("my-reservation")]
-		public async Task<ReservationModel> GetReservation()
-		{
-			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
-			return null;
-		}
-
         [HttpPost("reservation/{spotId}/{registrationPlate}")]
 		public async Task<string> ReserveParkingSpot(int spotId, string registrationPlate)
 		{
@@ -46,6 +39,14 @@ namespace ParkAhead.API.Controllers
 			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
 			var result = await _service.ArrivedAtParkingSpot(reservationId, username);
 			return result;
+		}
+
+		[HttpGet("my-reservation")]
+		public async Task<ReservationModel> GetReservation()
+		{
+			var username = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
+			var myReservation = await _service.GetReservation(username);
+			return myReservation;
 		}
 	}
 }

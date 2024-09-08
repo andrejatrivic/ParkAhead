@@ -128,3 +128,81 @@ input[type="text"] {
   border: 2px solid #fff;
   transition: background-color 0.3s ease;
 }
+
+.my-reservation-container {
+  flex: 1;
+  color: #0b1541;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  font-family: 'Trebuchet MS', sans-serif;
+  padding: 20px;
+  text-align: center;
+}
+
+  .my-reservation-container h2 {
+    color: #0b1541;
+    margin-bottom: 20px;
+  }
+
+  .my-reservation-container p {
+    margin: 10px 0;
+  }
+
+  .my-reservation-container p {
+    margin: 10px 0;
+  }
+
+  .btn-show {
+    width: 100%;
+    padding: 12px;
+    background-color: #f88219;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+
+    .btn-show:hover {
+      background-color: #db7418;
+    }
+
+  .btn-remove {
+    width: 100%;
+    padding: 12px;
+    background-color: #800000;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+
+    .btn-remove:hover {
+      background-color: #a70000;
+    }
+
+  .btn-arrived {
+    width: 100%;
+    padding: 12px;
+    background-color: #304529;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+
+    .btn-arrived:hover {
+      background-color: #3f5a36;
+    }
+

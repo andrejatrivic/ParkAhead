@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ParkAhead.Business.Interfaces;
 using ParkAhead.Business.Models.Reservation;
 using ParkAhead.Data.Entity;
@@ -127,7 +128,10 @@ namespace ParkAhead.Business.Services
 				return null;
 			}
 
-			var reservationEntity = _repository.GetAll().Where(x => x.UserId.Equals(userId)).FirstOrDefault();
+			var reservationEntity = _repository.GetAll().Where(x => x.UserId.Equals(userId))
+				.Include(x => x.ParkingSpot)
+				.Include(x => x.ParkingSpot.Parking)
+				.FirstOrDefault();
 			return _mapper.Map<ReservationModel>(reservationEntity);
 		} 
 	}

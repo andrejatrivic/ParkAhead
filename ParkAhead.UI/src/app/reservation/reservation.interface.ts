@@ -3,5 +3,6 @@ export interface Reservation {
   reservationStart: Date
   reservationEnd: Date
   registrationPlate: string
-  parkingSpotId: number
+  parkingSpotNumber: number
+  parkingName: string
 };
