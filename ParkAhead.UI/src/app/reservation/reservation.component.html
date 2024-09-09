@@ -45,8 +45,8 @@
       <p>Parking spot number: {{ myReservedSpot.parkingSpotNumber }}</p>
       <p>Parking name: {{ myReservedSpot.parkingName }}</p>
       <button class="btn-show">Show spot</button>
-      <button class="btn-remove">Remove reservation</button>
-      <button class="btn-arrived">Arrived at spot</button>
+      <button class="btn-remove" (click)="onCancelReservation(myReservedSpot.id)">Remove reservation</button>
+      <button class="btn-arrived" (click)="onArrivedAtParkingSpot(myReservedSpot.id)">Arrived at spot</button>
     </div>
 
   </div>

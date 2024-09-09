@@ -16,6 +16,7 @@ namespace ParkAhead.Business.Services
 
 		private const string SUCCESS = "SUCCESS";
 		private const string FAILED = "FAILED";
+		private const string TIMEOUT = "TIMEOUT";
 
 		private readonly IRepository<Reservation> _repository;
 		private readonly IRepository<User> _userRepository;
@@ -80,7 +81,7 @@ namespace ParkAhead.Business.Services
 
 			if(DateTime.Now > reservationEntity.ReservationStart.AddMinutes(5) || reservationEntity.UserId != userId)
 			{
-				return FAILED;
+				return TIMEOUT;
 			}
 
 			_repository.Delete(reservationEntity);
@@ -111,7 +112,7 @@ namespace ParkAhead.Business.Services
 
 			_repository.Delete(reservationEntity);
 			await _repository.SaveAsync();
-			_parkingSpotService.ChangeParkingSpotStatus(reservationEntity.ParkingSpotId, STATUS_OCCUPIED);
+			await _parkingSpotService.ChangeParkingSpotStatus(reservationEntity.ParkingSpotId, STATUS_OCCUPIED);
 			return SUCCESS;
 		}
 

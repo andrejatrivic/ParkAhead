@@ -103,6 +103,14 @@ export class ReservationComponent implements AfterViewInit {
     this.updateImageDimensions();
   }
 
+  isSpotAvailable(): boolean {
+    return this.selectedSpot?.statusId === 1;
+  }
+
+  getMyReservation(): void {
+    this.reservationService.getMyReservation();
+  }
+
   onReserveSpot(): void {
     if (!this.selectedSpot?.id) {
       alert("Please select a valid parking spot.");
@@ -129,12 +137,50 @@ export class ReservationComponent implements AfterViewInit {
     );
   }
 
-  isSpotAvailable(): boolean {
-    return this.selectedSpot?.statusId === 1;
+  onCancelReservation(reservationId: number): void {
+    this.reservationService.cancelReservation(reservationId).subscribe(
+      (response: string) => {
+        if (response === "TIMEOUT") {
+          alert("You can't cancel the reservation after 5 minutes!");
+        }
+        else if (response !== "FAILED") {
+          alert("Succesfull canceled reservation!");
+
+          if (this.selectedParkingId) {
+            this.fetchParkingSpots(this.selectedParkingId);
+          }
+          this.selectedSpot = null;
+        } 
+        else {
+          alert("Unsucessful canceled reservation.")
+        }
+      },
+      (error) => {
+        console.error('Error canceling reservation:', error);
+        alert("There was an error processing your request.");
+      }
+    );
   }
 
-  // dovrsi dohvat rezervacije
-  getMyReservation(): void {
-    this.reservationService.getMyReservation();
+  onArrivedAtParkingSpot(reservationId: number): void {
+    this.reservationService.arrivedAtParkingSpot(reservationId).subscribe(
+      (response: string) => {
+        console.log("response ", response);
+        if (response !== "FAILED") {
+          alert("Succesfull arriving at spot!");
+
+          if (this.selectedParkingId) {
+            this.fetchParkingSpots(this.selectedParkingId);
+          }
+          this.selectedSpot = null;
+        } else {
+          alert("Unsucessful arriving at spot.")
+        }
+      },
+      (error) => {
+        console.error('Error arriving at spot:', error);
+        alert("There was an error processing your request.");
+      }
+    );
   }
 }

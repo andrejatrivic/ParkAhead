@@ -44,4 +44,40 @@ export class ReservationService {
 
     return this.http.get<Reservation>(`${this.baseUrl}/my-reservation`, { headers });
   }
+
+  cancelReservation(reservationId: number): Observable<any> {
+    const jwtToken = this.cookieService.get('jwt');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${jwtToken}`,
+      'Accept': 'text/plain'
+    });
+
+    const options = {
+      headers: headers,
+      responseType: 'text' as 'json' 
+    };
+
+    return this.http.delete(`${this.baseUrl}/reservation/${reservationId}`, options);
+  }
+
+  arrivedAtParkingSpot(reservationId: number): Observable<any> {
+    const jwtToken = this.cookieService.get('jwt');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${jwtToken}`,
+      'Accept': 'text/plain'
+    });
+
+    const options = {
+      headers: headers,
+      responseType: 'text' as 'json'
+    };
+
+    console.log(jwtToken);
+
+    console.log(`${this.baseUrl}/reservation/${reservationId}/arrival`);
+
+    return this.http.put(`${this.baseUrl}/reservation/${reservationId}/arrival`, {}, options);
+  }
 }
