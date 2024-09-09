@@ -25,6 +25,20 @@ ParkAhead is an innovative parking management application designed to simplify t
 | 7 | Arrive at parking spot | After arriving at the reserved parking spot, users can notify the application by pressing a button, triggering the system to automatically "open the parking ramp or gate (This is just the idea, there are no real parking ramps involved... yet :) )". |
 
 ## Design
-| Id | Feature | Design |
-| :---: | :--- | :--- |
-||||
+### 1 User registration  
+<img src="https://github.com/user-attachments/assets/eb1bd131-5f9c-40a2-996a-d67a382014a0" width="800"> 
+
+### 2 User login 
+<img src="https://github.com/user-attachments/assets/6a64dc58-8f05-456c-b6ea-503780bc9626" width="800"> 
+
+### 3 All parkings
+<img src="https://github.com/user-attachments/assets/47d70279-fcd7-4d71-9177-f54ba153c3d4" width="800"> 
+
+### 4 All parking spots 
+<img src="https://github.com/user-attachments/assets/bc205180-db01-4f42-a5f4-53c6af1af422" width="800"> 
+
+### 5 Make a reservation 
+<img src="https://github.com/user-attachments/assets/eab9dc39-1251-4677-9001-05934918449c" width="800"> 
+
+### 6 and 7  Cancel reservation and arrive at parking spot 
+<img src="https://github.com/user-attachments/assets/4c3d5494-cbbb-4f89-9a43-88ff872fd2ae" width="800"> 
