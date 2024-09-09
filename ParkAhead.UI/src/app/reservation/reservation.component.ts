@@ -126,6 +126,7 @@ export class ReservationComponent implements AfterViewInit {
             this.fetchParkingSpots(this.selectedParkingId);
           }
           this.selectedSpot = null;
+          this.getMyReservation();
         } else {
           alert("Unsucessful registration.");
         }
@@ -150,6 +151,7 @@ export class ReservationComponent implements AfterViewInit {
             this.fetchParkingSpots(this.selectedParkingId);
           }
           this.selectedSpot = null;
+          this.getMyReservation();
         } 
         else {
           alert("Unsucessful canceled reservation.")
@@ -165,7 +167,6 @@ export class ReservationComponent implements AfterViewInit {
   onArrivedAtParkingSpot(reservationId: number): void {
     this.reservationService.arrivedAtParkingSpot(reservationId).subscribe(
       (response: string) => {
-        console.log("response ", response);
         if (response !== "FAILED") {
           alert("Succesfull arriving at spot!");
 
@@ -173,6 +174,7 @@ export class ReservationComponent implements AfterViewInit {
             this.fetchParkingSpots(this.selectedParkingId);
           }
           this.selectedSpot = null;
+          this.getMyReservation();
         } else {
           alert("Unsucessful arriving at spot.")
         }
