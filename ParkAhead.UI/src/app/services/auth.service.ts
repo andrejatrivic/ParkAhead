@@ -19,9 +19,6 @@ export class AuthService {
       .map(b => b.toString(16).padStart(2, '0'))
       .join('');
 
-    console.log('username: ' + username);
-    console.log('passHash: ' + this.passwordHash);
-
     return this.http.post(`${this.baseUrl}/Login`, { username, passwordHash: this.passwordHash }, { responseType: 'text' });
   }
 
@@ -32,11 +29,6 @@ export class AuthService {
     this.passwordHash = Array.from(new Uint8Array(hashBuffer))
       .map(b => b.toString(16).padStart(2, '0'))
       .join('');
-
-    console.log('username: ' + username);
-    console.log('email: ' + email);
-    console.log('phoneNumber: ' + phoneNumber);
-    console.log('passHash: ' + this.passwordHash);
 
     return this.http.post(`${this.baseUrl}/Registration`, { username, email, phoneNumber, passwordHash: this.passwordHash }, { responseType: 'text' });
   }

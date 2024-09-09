@@ -23,12 +23,12 @@ export class LoginComponent {
           this.cookieService.set('jwt', response);
           this.router.navigate(['/parking-spots']);
         } else {
-          alert('Greška kod prijave.');
+          alert('Failed login.');
         }
       },
       (error: any) => {
         console.error('Login error:', error);
-        alert('Greška kod prijave.');
+        alert('Failed login.');
       }
     );
   }

@@ -74,10 +74,6 @@ export class ReservationService {
       responseType: 'text' as 'json'
     };
 
-    console.log(jwtToken);
-
-    console.log(`${this.baseUrl}/reservation/${reservationId}/arrival`);
-
     return this.http.put(`${this.baseUrl}/reservation/${reservationId}/arrival`, {}, options);
   }
 }

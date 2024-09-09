@@ -15,10 +15,9 @@ import { GuestGuard } from './guards/guest.guard';
 const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'parkings', component: ParkingsComponent },
-  { path: 'reservations', component: ReservationComponent },
-  //{ path: 'reservations', component: ReservationComponent, canActivate: [AuthGuard] },
+  { path: 'reservations', component: ReservationComponent, canActivate: [AuthGuard] },
   { path: 'parking-spots', component: ParkingSpotsComponent },
-  { path: 'map', component: MapComponent },
+  //{ path: 'map', component: MapComponent },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
   { path: 'registration', component: RegistrationComponent, canActivate: [GuestGuard] },

@@ -19,6 +19,7 @@ export class ReservationComponent implements AfterViewInit {
   imageWidth: number = 0;
   imageHeight: number = 0;
   selectedSpot: ParkingSpot | null = null;
+  selectedSpotId: number | null = null;
   myReservedSpot: Reservation | null = null;
   registrationPlate: string = '';
 
@@ -75,6 +76,9 @@ export class ReservationComponent implements AfterViewInit {
   }
 
   getSpotColor(spot: ParkingSpot): string {
+    if (spot.statusId === 1 && spot.id === this.selectedSpotId) {
+      return 'hotpink'; 
+    }
     switch (spot.statusId) {
       case 1:
         return 'green';
@@ -89,6 +93,7 @@ export class ReservationComponent implements AfterViewInit {
 
   onSpotClick(spot: ParkingSpot): void {
     this.selectedSpot = spot;  
+    this.selectedSpotId = spot.id; 
   }
 
   updateImageDimensions(): void {

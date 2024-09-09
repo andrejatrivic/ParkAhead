@@ -57,17 +57,21 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  color: #f2f2f2;
+  background-color: #0b1541;
 }
 
 .status-red {
-  background-color: #ffcccc;
+  color: #f2f2f2;
+  background-color: #ff1a1a;
 }
 
 .status-orange {
-  background-color: #ffe5b4;
+  color: #f2f2f2;
+  background-color: #ffb833;
 }
 
 .status-green {
-  background-color: #ccffcc;
+  color: #f2f2f2;
+  background-color: #5cd65c;
 }

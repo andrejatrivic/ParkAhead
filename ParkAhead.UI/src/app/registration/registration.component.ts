@@ -19,18 +19,16 @@ export class RegistrationComponent {
   async onSubmit(): Promise<void> {
     (await this.authService.register(this.username, this.email, this.phone, this.password)).subscribe(
       (response: string) => {
-        console.log("response: " + response);
-
         if (response !== "FAILED") {
           this.cookieService.set('jwt', response);
           this.router.navigate(['/parking-spots']);
         } else {
-          alert('Neuspješna registracija.');
+          alert('Failed registration.');
         }
       },
       (error: any) => {
         console.error('Registration error:', error);
-        alert('Neuspješna registracija.');
+        alert('Failed registration.');
       }
     );
   }
