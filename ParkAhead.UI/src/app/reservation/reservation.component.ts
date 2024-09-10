@@ -76,6 +76,11 @@ export class ReservationComponent implements AfterViewInit {
   }
 
   getSpotColor(spot: ParkingSpot): string {
+    console.log("spot id: ", spot.id)
+    console.log("spot status id: ", spot.statusId)
+    if (spot.statusId === 3 && spot.id === this.selectedSpotId) {
+      return 'blue';
+    }
     if (spot.statusId === 1 && spot.id === this.selectedSpotId) {
       return 'hotpink'; 
     }
