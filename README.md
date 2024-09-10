@@ -6,11 +6,34 @@ ParkAhead is an innovative parking management application designed to simplify t
 * [Get started](#get-started)
 * [Technologies](#technologies)
 * [Functionalities](#functionalities)
+* [Era model](#era-model)
 * [Design](#design)
 
 ## Get started
 
 ## Technologies
+### Backend
+
+- [.NET 8](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/overview) 
+- [Entity Framework Core 8](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-8.0/whatsnew)
+- REST API
+
+### Frontend
+
+- [Angular 18.2.0](https://www.angulararchitects.io/blog/whats-new-in-angular-18/)
+- TypeScript
+- HTML
+- CSS
+
+### Tools
+
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+- Node.js & npm
+- Git
+
+Database
+
+- [SQL Server Management Studio 20 (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
 
 ## Functionalities
 
@@ -23,6 +46,11 @@ ParkAhead is an innovative parking management application designed to simplify t
 | 5 | Make a reservation | Allows users to select a specific parking spot from the available options and make a reservation. |
 | 6 | Cancel reservation | Allows users to cancel a reservation within a 5-minute window after making it. |
 | 7 | Arrive at parking spot | After arriving at the reserved parking spot, users can notify the application by pressing a button, triggering the system to automatically "open the parking ramp or gate (This is just the idea, there are no real parking ramps involved... yet :) )". |
+
+## Era model
+
+![image](https://github.com/user-attachments/assets/875115cd-c2f7-4da1-87ae-b2115d12c240)
+
 
 ## Design
 ### 1 User registration  
