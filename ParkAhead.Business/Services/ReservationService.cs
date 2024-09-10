@@ -134,6 +134,21 @@ namespace ParkAhead.Business.Services
 				.Include(x => x.ParkingSpot.Parking)
 				.FirstOrDefault();
 			return _mapper.Map<ReservationModel>(reservationEntity);
-		} 
+		}
+
+		public async Task CheckReservations()
+		{
+			var time = DateTime.Now;
+			var reservations = await _repository.GetAll().ToListAsync();
+
+			foreach (var reservation in reservations)
+			{
+				if (reservation.ReservationEnd > time)
+				{
+					_repository.Delete(reservation);
+					await _repository.SaveAsync();
+				}
+			}
+		}
 	}
 }
