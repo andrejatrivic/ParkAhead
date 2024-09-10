@@ -8,5 +8,6 @@ namespace ParkAhead.Business.Interfaces
 		Task<string> CancelReservation(int reservationId, string username);
 		Task<string> ArrivedAtParkingSpot(int reservationId, string username);
 		Task<ReservationModel> GetReservation(string username);
+		Task CheckReservations();
 	}
 }
