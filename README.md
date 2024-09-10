@@ -7,9 +7,30 @@ ParkAhead is an innovative parking management application designed to simplify t
 * [Technologies](#technologies)
 * [Functionalities](#functionalities)
 * [Era model](#era-model)
-* [Design](#design)
+* [Timer trigger](#timer-trigger)
+* [User interface](#user-interface)
 
 ## Get started
+
+Clone the repository or download the files.
+
+### Backend
+
+Open the solution in Visual studio.
+
+Set multiple startup projects (API and TimerTrigger).
+
+Start the backend project.
+
+![image](https://github.com/user-attachments/assets/fd94d916-eead-4a01-8a79-32e8b2e58dc4)
+
+### Frontend
+
+Open terminal on project ParkAhead.UI, write the command bellow.
+
+```
+ng serve
+```
 
 ## Technologies
 ### Backend
@@ -17,6 +38,7 @@ ParkAhead is an innovative parking management application designed to simplify t
 - [.NET 8](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/overview) 
 - [Entity Framework Core 8](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-8.0/whatsnew)
 - REST API
+- [Azure functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-versions?tabs=isolated-process%2Cv4&pivots=programming-language-csharp)
 
 ### Frontend
 
@@ -49,24 +71,30 @@ Database
 
 ## Era model
 
-![image](https://github.com/user-attachments/assets/875115cd-c2f7-4da1-87ae-b2115d12c240)
+<img src="https://github.com/user-attachments/assets/875115cd-c2f7-4da1-87ae-b2115d12c240" width="600">
 
+## Timer trigger
 
-## Design
+A timer-triggered function has been created using Azure Functions to check reservation times. This function runs every minute and queries the database to identify any reservations that have expired.
+
+## User interface
+
+You can click on the image to expand it for a better view.
+
 ### 1 User registration  
-<img src="https://github.com/user-attachments/assets/eb1bd131-5f9c-40a2-996a-d67a382014a0" width="800"> 
+<img src="https://github.com/user-attachments/assets/eb1bd131-5f9c-40a2-996a-d67a382014a0" width="600"> 
 
 ### 2 User login 
-<img src="https://github.com/user-attachments/assets/6a64dc58-8f05-456c-b6ea-503780bc9626" width="800"> 
+<img src="https://github.com/user-attachments/assets/6a64dc58-8f05-456c-b6ea-503780bc9626" width="600"> 
 
 ### 3 All parkings
-<img src="https://github.com/user-attachments/assets/47d70279-fcd7-4d71-9177-f54ba153c3d4" width="800"> 
+<img src="https://github.com/user-attachments/assets/47d70279-fcd7-4d71-9177-f54ba153c3d4" width="600"> 
 
 ### 4 All parking spots 
-<img src="https://github.com/user-attachments/assets/bc205180-db01-4f42-a5f4-53c6af1af422" width="800"> 
+<img src="https://github.com/user-attachments/assets/bc205180-db01-4f42-a5f4-53c6af1af422" width="600"> 
 
 ### 5 Make a reservation 
-<img src="https://github.com/user-attachments/assets/eab9dc39-1251-4677-9001-05934918449c" width="800"> 
+<img src="https://github.com/user-attachments/assets/eab9dc39-1251-4677-9001-05934918449c" width="600"> 
 
 ### 6 and 7  Cancel reservation and arrive at parking spot 
-<img src="https://github.com/user-attachments/assets/4c3d5494-cbbb-4f89-9a43-88ff872fd2ae" width="800"> 
+<img src="https://github.com/user-attachments/assets/4c3d5494-cbbb-4f89-9a43-88ff872fd2ae" width="600"> 
