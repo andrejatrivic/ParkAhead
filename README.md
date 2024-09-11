@@ -18,7 +18,7 @@ Clone the repository or download the files.
 
 Open the solution in Visual studio.
 
-Set multiple startup projects (API and TimerTrigger).
+Set multiple startup projects (API and CheckReservations (Timer trigger)).
 
 Start the backend project.
 
