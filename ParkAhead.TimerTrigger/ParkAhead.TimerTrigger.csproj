@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.ApplicationInsights" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ParkAhead.API\ParkAhead.API.csproj" />
     <ProjectReference Include="..\ParkAhead.Business\ParkAhead.Business.csproj" />
     <ProjectReference Include="..\ParkAhead.Data\ParkAhead.Data.csproj" />
   </ItemGroup>
@@ -25,10 +26,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="host.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="local.settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
