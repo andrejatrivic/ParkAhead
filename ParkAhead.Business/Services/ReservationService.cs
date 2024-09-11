@@ -143,7 +143,7 @@ namespace ParkAhead.Business.Services
 
 			foreach (var reservation in reservations)
 			{
-				if (reservation.ReservationEnd > time)
+				if (reservation.ReservationEnd < time)
 				{
 					_repository.Delete(reservation);
 					await _repository.SaveAsync();
