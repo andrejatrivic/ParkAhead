@@ -22,7 +22,7 @@ Set multiple startup projects (API and TimerTrigger).
 
 Start the backend project.
 
-![image](https://github.com/user-attachments/assets/fd94d916-eead-4a01-8a79-32e8b2e58dc4)
+![image](https://github.com/user-attachments/assets/02926000-0c15-4eb7-b9f2-8c917f2eb747)
 
 ### Frontend
 
