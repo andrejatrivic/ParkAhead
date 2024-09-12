@@ -1,4 +1,21 @@
-<div class="map"
-     leaflet
-     [leafletOptions]="options">
+<h2>Reserve parking</h2>
+
+<div class="container">
+  <select (change)="onParkingSelect($event)">
+    <option *ngFor="let parking of parkings" [value]="parking.id">{{ parking.name }}</option>
+  </select>
+</div>
+
+<div class="map-reservation-container">
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+  <div class="reservation-my-reservation-container">
+    <div class="reservation-container">
+      <h2>Spot Info</h2>
+    </div>
+    <div class="my-reservation-container">
+      <h2>My reservation</h2>
+    </div>
+  </div>
 </div>

@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkAhead.Data", "ParkAhead
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ParkAhead.UI", "ParkAhead.UI\ParkAhead.UI.esproj", "{7B002449-F8EF-470E-85CA-8A2E3E6B1DB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkAhead.TimerTrigger", "ParkAhead.TimerTrigger\ParkAhead.TimerTrigger.csproj", "{D9C23DBF-A266-4E41-B995-C6F37845485B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkAhead.CheckReservations", "ParkAhead.CheckReservations\ParkAhead.CheckReservations.csproj", "{7F787C3E-82E0-47ED-8E50-C6C3A89798B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkAhead.CheckReservations", "ParkAhead.CheckReservations\ParkAhead.CheckReservations.csproj", "{7F787C3E-82E0-47ED-8E50-C6C3A89798B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{7B002449-F8EF-470E-85CA-8A2E3E6B1DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B002449-F8EF-470E-85CA-8A2E3E6B1DB6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B002449-F8EF-470E-85CA-8A2E3E6B1DB6}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{D9C23DBF-A266-4E41-B995-C6F37845485B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9C23DBF-A266-4E41-B995-C6F37845485B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9C23DBF-A266-4E41-B995-C6F37845485B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9C23DBF-A266-4E41-B995-C6F37845485B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F787C3E-82E0-47ED-8E50-C6C3A89798B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F787C3E-82E0-47ED-8E50-C6C3A89798B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F787C3E-82E0-47ED-8E50-C6C3A89798B9}.Release|Any CPU.ActiveCfg = Release|Any CPU

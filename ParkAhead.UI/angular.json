@@ -33,12 +33,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public"                
               }
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/leaflet/dist/leaflet.css"
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -99,8 +99,8 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/leaflet/dist/leaflet.css"
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/styles.css"
             ],
             "scripts": [],
             "karmaConfig": "karma.conf.js"

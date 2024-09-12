@@ -27,6 +27,7 @@
     "leaflet": "^1.9.4",
     "ngx-cookie": "^6.0.1",
     "ngx-cookie-service": "^18.0.0",
+    "ngx-leaflet": "^0.0.16",
     "run-script-os": "*",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
