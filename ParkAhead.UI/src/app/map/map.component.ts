@@ -18,6 +18,10 @@ export class MapComponent implements OnInit {
   parkings: Parking[] = [];
   parkingSpots: ParkingSpot[] = [];
   selectedParkingId: number | null = null;
+  selectedSpot: ParkingSpot | null = null;
+  selectedSpotId: number | null = null;
+  myReservedSpot: Reservation | null = null;
+  registrationPlate: string = '';
 
   constructor(
     private parkingSpotService: ParkingSpotService,
@@ -28,6 +32,8 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.initMap();
     this.initParkingSelect();
+
+    this.getMyReservation();
   }
 
   private initMap(): void {
@@ -98,12 +104,54 @@ export class MapComponent implements OnInit {
         iconUrl = 'images/orange-marker.png';
         break;
       default:
-        iconUrl = ''; 
+        iconUrl = 'images/not-found-marker.png'; 
     }
 
     return L.icon({
       iconUrl
     });
+  }
+
+  isSpotAvailable(): boolean {
+    return this.selectedSpot?.statusId === 1;
+  }
+
+  onReserveSpot(): void {
+    if (!this.selectedSpot?.id) {
+      alert("Please select a valid parking spot.");
+      return;
+    }
+
+    this.reservationService.reserveParkingSpot(this.selectedSpot.id, this.registrationPlate).subscribe(
+      (response: string) => {
+        if (response !== "FAILED") {
+          alert("Succesfull reservation!");
+
+          if (this.selectedParkingId) {
+            this.fetchParkingSpots(this.selectedParkingId);
+          }
+          this.selectedSpot = null;
+          this.getMyReservation();
+        } else {
+          alert("Unsucessful reservation.");
+        }
+      },
+      (error) => {
+        console.error('Error reserving spot:', error);
+        alert("There was an error processing your request.");
+      }
+    );
+  }
+
+  getMyReservation(): void {
+    this.reservationService.getMyReservation().subscribe(
+      (reservation: Reservation) => {
+        this.myReservedSpot = reservation;
+      },
+      (error) => {
+        console.error('Error fetching reservation:', error);
+      }
+    );
   }
 
   private clearMarkers(): void {

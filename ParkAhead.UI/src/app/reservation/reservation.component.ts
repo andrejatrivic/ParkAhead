@@ -50,6 +50,8 @@ export class ReservationComponent implements AfterViewInit {
         console.error('Error fetching reservation:', error);
       }
     );
+
+    this.getMyReservation();
   }
 
   ngAfterViewInit(): void {
@@ -133,7 +135,7 @@ export class ReservationComponent implements AfterViewInit {
           this.selectedSpot = null;
           this.getMyReservation();
         } else {
-          alert("Unsucessful registration.");
+          alert("Unsucessful reservation.");
         }
       },
       (error) => {
