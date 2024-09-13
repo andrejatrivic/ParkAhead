@@ -48,6 +48,7 @@ ng serve
 - TypeScript
 - HTML
 - CSS
+- [OpenStreetMap](https://www.openstreetmap.org/help)
 
 ### Tools
 
