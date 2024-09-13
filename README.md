@@ -67,7 +67,7 @@ Database
 | 2 | User login | Enables existing users to log into the application using their username and password. |
 | 3 | All parkings | Displays a list of all available parking lots. |
 | 4 | All parking spots | Provides a detailed view of all individual parking spots within a selected parking lot. |
-| 5 | Make a reservation | Allows users to select a specific parking spot from the available options and make a reservation. |
+| 5 | Make a reservation on image of parking lot and on a real map | Allows users to select a specific parking spot from the available options and make a reservation. |
 | 6 | Cancel reservation | Allows users to cancel a reservation within a 5-minute window after making it. |
 | 7 | Arrive at parking spot | After arriving at the reserved parking spot, users can notify the application by pressing a button, triggering the system to automatically "open the parking ramp or gate (This is just the idea, there are no real parking ramps involved... yet :) )". |
 
@@ -97,6 +97,8 @@ You can click on the image to expand it for a better view.
 
 ### 5 Make a reservation 
 <img src="https://github.com/user-attachments/assets/eab9dc39-1251-4677-9001-05934918449c" width="600"> 
+
+<img src="https://github.com/user-attachments/assets/7db724d9-7f6b-49bc-8233-40a665d1857a" width="600"> 
 
 ### 6 and 7  Cancel reservation and arrive at parking spot 
 <img src="https://github.com/user-attachments/assets/4c3d5494-cbbb-4f89-9a43-88ff872fd2ae" width="600"> 
