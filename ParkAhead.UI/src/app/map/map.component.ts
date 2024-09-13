@@ -83,11 +83,16 @@ export class MapComponent implements OnInit {
       this.clearMarkers(); 
 
       for (const parkingSpot of parkingSpots) {
-        const { latitude, longitude, statusId } = parkingSpot;
+        const { id, latitude, longitude, statusId } = parkingSpot;
         const icon = this.setIcon(statusId);
-        L.marker([latitude, longitude], { icon }).addTo(this.map); 
+        L.marker([latitude, longitude], { icon }).addTo(this.map).
+        on('click', () => this.getSpotInformation(parkingSpot)); 
       }
     }
+  }
+
+  getSpotInformation(spot: ParkingSpot): void {
+    this.selectedSpot = spot;
   }
 
   setIcon(statusId: number): L.Icon {

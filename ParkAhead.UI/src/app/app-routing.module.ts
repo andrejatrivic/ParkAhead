@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'parkings', component: ParkingsComponent },
   { path: 'reservations', component: ReservationComponent, canActivate: [AuthGuard] },
   { path: 'parking-spots', component: ParkingSpotsComponent },
-  { path: 'map', component: MapComponent },
+  { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent },
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
   { path: 'registration', component: RegistrationComponent, canActivate: [GuestGuard] },

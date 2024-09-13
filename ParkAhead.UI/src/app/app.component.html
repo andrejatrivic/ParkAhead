@@ -4,7 +4,7 @@
       <li><a routerLink="/parkings">Parkings</a></li>
       <li><a routerLink="/reservations">Reservations</a></li>
       <li><a routerLink="/parking-spots">Parking Spots</a></li>
-      <li><a routerLink="/map">Map</a></li>
+      <li><a routerLink="/map">Map reservations</a></li>
       <li *ngIf="!isLoggedIn" class="login"><a routerLink="/login">Login</a></li>
       <li *ngIf="isLoggedIn" class="logout"><a (click)="logout()">Logout</a></li>
     </ul>
